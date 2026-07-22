@@ -1,6 +1,6 @@
 # AI-Powered Sales Reporting Automation (Make.com + Gemini API)
 
-An end-to-end, no-code automation pipeline that pulls sales data from Google Sheets, uses Google's Gemini AI to generate a natural-language business report, and automatically distributes it via **Gmail (HTML report)** and **Slack (formatted summary)** — on a schedule, with zero manual effort.
+An end-to-end, automation pipeline that pulls sales data from Google Sheets, uses Google's Gemini AI to generate a natural-language business report, and automatically distributes it via **Gmail (HTML report)** and **Slack (formatted summary)** — on a schedule, with zero manual effort.
 
 ---
 
@@ -62,14 +62,13 @@ The automation produces a weekly business summary covering:
 - Eliminates ~30–45 minutes of manual weekly reporting work
 - Removes human error in transcribing figures from the sheet
 - Delivers to two channels (email + Slack) simultaneously with format tailored to each
-- Fully no-code — reproducible by any analyst without writing a backend service
 
 ## ⚙️ Setup Overview
 
 1. Connect Google Sheets module → point to your sales data range
 2. Add a Text Aggregator to flatten rows into a single text block
 3. Add a Router with two branches
-4. In each branch, add an HTTP module (`POST` to `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent`) with header `x-goog-api-key: YOUR_API_KEY` and a JSON body containing the prompt above
+4. In each branch, add an HTTP module and a JSON body containing the prompt 
 5. Connect branch 1 → Gmail (Send an Email), branch 2 → Slack (Send a Message)
 6. Set the scenario schedule (e.g., every Monday 9 AM)
 
